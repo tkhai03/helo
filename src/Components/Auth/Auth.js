@@ -30,7 +30,16 @@ class Auth extends Component {
             })
     }
 
-    handleLogin = (e) => {}
+    handleLogin = (e) => {
+        const { username, password } = this.state
+
+        axios
+            .post('./api/auth/login', { username, password })
+            .then((res) => {
+                this.props.loginUser(res.data)
+                this.history.push()
+            })
+    }
 
 
 
