@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+// import Auth from './Components/Auth/Auth'
+// import Dashboard from './Components/Dashboard/Dashboard'
+// import Post from './Components/Post/Post'
 
 export default class Nav extends Component {
     constructor(){
@@ -14,7 +17,9 @@ export default class Nav extends Component {
     render(){
         return(
             <div>
-                Nav.js
+                <button>Home</button>
+                <button>New Post</button>
+                <button>Logout</button>
             </div>
         )
     }

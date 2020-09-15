@@ -1,21 +1,17 @@
-import React from 'react';
-import Dashboard from './Components/Dashboard/Dashboard'
-import Auth from './Components/Auth/Auth'
-import Form from './Components/Form/Form'
+import React from 'react'
 import Nav from './Components/Nav/Nav'
-import Post from './Components/Post/Post'
+import routes from './routes'
+
+
 
 
 function App() {
   return (
     <div className="App">
-      <Dashboard/>
-      <Auth/>
-      <Form/>
       <Nav/>
-      <Post/>
+      {routes}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

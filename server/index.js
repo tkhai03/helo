@@ -8,8 +8,6 @@ const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 
 
 
-
-
 massive({
     connectionString: CONNECTION_STRING,
     ssl: {rejectUnauthorized: false}
