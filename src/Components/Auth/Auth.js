@@ -22,8 +22,8 @@ class Auth extends Component {
         axios
             .post('./api/auth/register', {username, password})
             .then((res) => {
-                this.loginUser(res.data)
-                this.history.push('./Dashboard/Dashboard')
+                this.props.loginUser(res.data)
+                this.props.history.push('/dashboard')
             })
             .catch((err) => {
                 alert(err.message)
@@ -37,13 +37,9 @@ class Auth extends Component {
             .post('./api/auth/login', { username, password })
             .then((res) => {
                 this.props.loginUser(res.data)
-                this.history.push()
+                this.props.history.push('/dashboard')
             })
     }
-
-
-
-
 
 
     render(){
@@ -54,7 +50,7 @@ class Auth extends Component {
                     <input placeholder="Enter Password" name="password" onChange={(e) => {this.handleInput(e)}}/>
                 </div>
                 <button onClick={ () => {this.handleLogin()} }>Log In</button>
-                <button to="/register">Register</button>
+                <button onClick={ () => {this.handleRegister()} } to="/register">Register</button>
             </div>
         )
     }
