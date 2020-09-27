@@ -50,9 +50,9 @@ class Auth extends Component {
                     <header className="header">Helo</header>
                     <div className="input-box">
                         <p>Username:</p>
-                        <input placeholder="Enter Username" name="username" onChange={(e) => {this.handleInput(e)}}/>
+                        <input placeholder="Enter Username" name="username" text="text" value={this.state.username} onChange={(e) => {this.handleInput(e)}}/>
                         <p>Password:</p>
-                        <input placeholder="Enter Password" name="password" onChange={(e) => {this.handleInput(e)}}/>
+                        <input placeholder="Enter Password" name="password" text="text" value={this.state.password} onChange={(e) => {this.handleInput(e)}}/>
                     </div>
                     <div className="button-container">
                     <button className="auth-button" onClick={ () => {this.handleLogin()} }>Log In</button>

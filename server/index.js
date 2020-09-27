@@ -1,5 +1,6 @@
 const express = require('express')
 const massive = require('massive')
+const authCtrl = require('./controller')
 require('dotenv').config()
 
 const app = express()
@@ -16,3 +17,6 @@ massive({
     console.log('DB connection has been made.')
     app.listen(SERVER_PORT, () => console.log(`Arriving on port ${SERVER_PORT}`))
 })
+
+app.post('/auth/register', authCtrl.register)
+app.post('/auth/login', authCtrl.login)
