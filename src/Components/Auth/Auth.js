@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+// import './Auth.css'
 
 class Auth extends Component {
     constructor(){
@@ -44,13 +45,20 @@ class Auth extends Component {
 
     render(){
         return(
-            <div>
-                <div>
-                    <input placeholder="Enter Username" name="username" onChange={(e) => {this.handleInput(e)}}/>
-                    <input placeholder="Enter Password" name="password" onChange={(e) => {this.handleInput(e)}}/>
+            <div className="whole-view">
+                <div className="auth-box">
+                    <header className="header">Helo</header>
+                    <div className="input-box">
+                        <p>Username:</p>
+                        <input placeholder="Enter Username" name="username" onChange={(e) => {this.handleInput(e)}}/>
+                        <p>Password:</p>
+                        <input placeholder="Enter Password" name="password" onChange={(e) => {this.handleInput(e)}}/>
+                    </div>
+                    <div className="button-container">
+                    <button className="auth-button" onClick={ () => {this.handleLogin()} }>Log In</button>
+                    <button className="auth-button" onClick={ () => {this.handleRegister()} } to="/register">Register</button>
+                    </div>
                 </div>
-                <button onClick={ () => {this.handleLogin()} }>Log In</button>
-                <button onClick={ () => {this.handleRegister()} } to="/register">Register</button>
             </div>
         )
     }
