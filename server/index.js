@@ -1,9 +1,12 @@
+
 const express = require('express')
 const massive = require('massive')
+// const session = require('express-session')
 const authCtrl = require('./controller')
 require('dotenv').config()
 
 const app = express()
+app.use(express.json())
 
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 
