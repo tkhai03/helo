@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs')
+const e = require('express')
 
 module.exports = {
     register: async (req, res) => {
@@ -45,5 +46,19 @@ module.exports = {
     logout: (req, res) => {
         req.sesion.destroy()
         res.sendStatus(200)
+    },
+    getUser: (req, res) => {
+        if (req.session.user){
+            res.status(200).send(req.session.user)
+        } else {
+            res.status(404).send('No session found')
+        }
+        
+    },
+    me: async(req, res) => {
+        const db = req.app.get("db")
+        const {user_id, username, profile_pic} = req.session
+        const user = await db.me(user_id, username, profile_pic)
+        res.status(200).send(req.session.user)
     }
 }
