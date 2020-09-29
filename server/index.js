@@ -1,7 +1,7 @@
 
 const express = require('express')
 const massive = require('massive')
-// const session = require('express-session')
+const session = require('express-session')
 const authCtrl = require('./controller')
 require('dotenv').config()
 
@@ -21,5 +21,15 @@ massive({
     app.listen(SERVER_PORT, () => console.log(`Arriving on port ${SERVER_PORT}`))
 })
 
-app.post('/auth/register', authCtrl.register)
-app.post('/auth/login', authCtrl.login)
+app.post('/api/auth/register', authCtrl.register)
+app.post('/api/auth/login', authCtrl.login)
+app.post('/api/auth/logout', authCtrl.logout)
+
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: SESSION_SECRET,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 365
+    }
+}))

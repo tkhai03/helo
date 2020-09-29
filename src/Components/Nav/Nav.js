@@ -1,26 +1,29 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {connect} from 'react-redux'
+import './Nav.css'
+
 // import Auth from './Components/Auth/Auth'
 // import Dashboard from './Components/Dashboard/Dashboard'
 // import Post from './Components/Post/Post'
 
-export default class Nav extends Component {
-    constructor(){
-        super()
-    }
+function Nav(props){
 
 
 
+console.log(props)
 
 
+     return(
+        <div className="nav-container">
+            <button>Home</button>
+            <button>New Post</button>
+            <button>Logout</button>
+        </div>
+    )
 
-
-    render(){
-        return(
-            <div>
-                <button>Home</button>
-                <button>New Post</button>
-                <button>Logout</button>
-            </div>
-        )
-    }
 }
+
+function mapStatetoProps(state){
+    return state
+}
+export default connect(mapStatetoProps)(Nav)

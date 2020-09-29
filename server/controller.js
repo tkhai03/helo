@@ -16,16 +16,16 @@ module.exports = {
 
         const [newUser] = await db.register_user([username, hash])
 
-        req.session.user = newUser
+       newUser = req.session.user
 
-        res.status(200).send(req.session.user)
+        res.status(200).send(newUser)
 
     },
     login: async (req, res) => {
         const db = req.app.get('db')
         const {username, password} = req.body
 
-        const [existingUser] = await db.check_user([username])
+        const [existingUser] = await db.check_username([username])
 
         if (!existingUser) {
             return res.status(404).send('Username not found')
@@ -37,5 +37,13 @@ module.exports = {
             return res.status(403).send('Incorrect username or password')
         }
         delete existingUser.hash
+
+        //User on Session
+        existingUser = req.session.user
+
+    },
+    logout: (req, res) => {
+        req.sesion.destroy()
+        res.sendStatus(200)
     }
 }
